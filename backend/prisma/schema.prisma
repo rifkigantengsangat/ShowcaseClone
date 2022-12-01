@@ -11,10 +11,14 @@ datasource db {
 }
 model User{ 
    id  Int      @id @default(autoincrement())
-   username  String?
+   username  String? @unique
    email String @unique
    password String 
+   ProfileUser  String ?
+    createdAt          DateTime  @default(now())
+    updatedAt DateTime @updatedAt
    token Token?
+   post Post[]
   
 }
 model Token { 
@@ -22,5 +26,14 @@ model Token {
   user   User @relation(fields: [userId], references: [id])
   userId  Int @unique
 
+}
+model Post {
+  id  String @default(uuid())
+  TitlePosting String @db.VarChar(100)
+  userPost User @relation(fields: [name],references: [username])
+  LikePost Int ?
+  name String    @unique
+  imagePost String ? 
+ tanggalPosting  DateTime @default(now())  
 }
 

@@ -1,6 +1,6 @@
 export const ErrorResponseJson = (res, statusCode, message)=>{
-    res.status(statusCode || 400).json({
-        code : statusCode  || 200,
+    res.status(statusCode).json({
+        code : statusCode  || 400,
         message : message || "Failed"
     })
 }
